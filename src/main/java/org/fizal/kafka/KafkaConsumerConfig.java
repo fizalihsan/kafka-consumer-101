@@ -11,6 +11,12 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 
 import java.util.Map;
 
+/**
+ * @EnableKafka enables detection of @KafkaListener annotations on any Spring-managed bean in the container.
+ * https://docs.spring.io/spring-kafka/api/org/springframework/kafka/annotation/EnableKafka.html
+ *
+ *
+ */
 @EnableKafka
 @Configuration
 public class KafkaConsumerConfig {
@@ -22,7 +28,7 @@ public class KafkaConsumerConfig {
         System.out.println("Container Factory Created....");
 
         Map<String, Object> props = Map.of(
-                ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092",
+                ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress,
                 ConsumerConfig.GROUP_ID_CONFIG, groupId,
                 ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
                 ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
